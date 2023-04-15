@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lesson7/constants/my_questions.dart';
 import 'package:flutter_lesson7/constants/my_styles.dart';
-import 'package:flutter_lesson7/constants/my_texts.dart';
 import 'package:flutter_lesson7/newScaffold.dart';
 import 'constants/my_colors.dart';
 
@@ -26,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           style: MyTextStyles.appBarTextStyle,
         ),
       ),
-      body: NewBody(),
+      body: const NewBody(),
     );
   }
 }

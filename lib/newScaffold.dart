@@ -1,17 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_lesson7/constants/my_questions.dart';
+import 'package:flutter_lesson7/AnswersPage.dart';
 import 'package:flutter_lesson7/constants/my_styles.dart';
 import 'package:flutter_lesson7/constants/my_texts.dart';
 import 'constants/my_colors.dart';
-import 'dart:math';
+import 'models/useAnsAnsQues.dart';
 
-List questons = <String>[
-  "Кыргызстанда 7 область барбы?",
-  "Талас Кыргызстандын борборубу?",
-  "Кыргызстан туштук батышынан Озбекстан менен кездешетпи?"
-];
-
-List answers = <String>["true", "false", 'true'];
+List<bool> yourAnswers = [];
 
 class NewBody extends StatefulWidget {
   const NewBody({super.key});
@@ -22,129 +18,86 @@ class NewBody extends StatefulWidget {
 
 class _NewBodyState extends State<NewBody> {
   bool test = false;
-  int index = Random().nextInt(3);
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            "${questons[index]}",
-            style: MyTextStyles.appTextStyle,
-            textAlign: TextAlign.center,
-          ),
+          if (index != -1)
+            Text(
+              UseAnsAndAnswer().getQuestion(index),
+              style: MyTextStyles.appTextStyle,
+              textAlign: TextAlign.center,
+            ),
           const SizedBox(
             height: 102,
           ),
-          SizedBox(
-            width: 335,
-            height: 70,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: MyColors.trueBackgroundColor),
-              onPressed: () {
-                test = true;
-                if (answers[index] == "true") {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        MyTexts.trueAnswer,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: MyColors.trueBackgroundColor, fontSize: 30),
-                      ),
-                    ),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        MyTexts.falseAnswer,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: MyColors.falseBackgroundColor, fontSize: 30),
-                      ),
-                    ),
-                  );
-                }
-              },
-              child: const Text(
-                MyTexts.trueText,
-                style: MyTextStyles.trueTextStyle,
+          if (index != -1)
+            SizedBox(
+              width: 335,
+              height: 70,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: MyColors.trueBackgroundColor),
+                onPressed: () {
+                  setState(() {
+                    yourAnswers.add(true);
+                    index = UseAnsAndAnswer().next(index);
+                  });
+                },
+                child: const Text(
+                  MyTexts.trueText,
+                  style: MyTextStyles.trueTextStyle,
+                ),
               ),
             ),
-          ),
           const SizedBox(
             height: 30,
           ),
-          SizedBox(
-            width: 335,
-            height: 70,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: MyColors.falseBackgroundColor),
-              onPressed: () {
-                test = true;
-                if (answers[index] == "false") {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        MyTexts.trueAnswer,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: MyColors.trueBackgroundColor, fontSize: 30),
-                      ),
-                    ),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        MyTexts.falseAnswer,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: MyColors.falseBackgroundColor, fontSize: 30),
-                      ),
-                    ),
-                  );
-                }
-              },
-              child: const Text(
-                MyTexts.falseText,
-                style: MyTextStyles.trueTextStyle,
+          if (index != -1)
+            SizedBox(
+              width: 335,
+              height: 70,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: MyColors.falseBackgroundColor),
+                onPressed: () {
+                  setState(() {
+                    yourAnswers.add(false);
+                    index = UseAnsAndAnswer().next(index);
+                  });
+                },
+                child: const Text(
+                  MyTexts.falseText,
+                  style: MyTextStyles.trueTextStyle,
+                ),
               ),
             ),
-          ),
           const SizedBox(
-            height: 45,
+            height: 30,
           ),
-          SizedBox(
-            width: 200,
-            height: 40,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+          if (index == -1)
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  // кырынын калындыгы жана тусу
+                  side: const BorderSide(width: 2, color: Colors.black),
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15)),
               onPressed: () {
-                if (test) {
-                  NewBody();
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        "Сиз суроого жооп бербединиз!",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.amber, fontSize: 30),
-                      ),
-                    ),
-                  );
-                }
+                // Навигация кийинки бетке
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        // Экинчи баракты чакыруу
+                        builder: (context) => AnswersPage(list: yourAnswers)));
               },
-              child: const Text(
-                "next",
-                style: MyTextStyles.trueTextStyle,
-              ),
+              child: const Text("finish"),
             ),
-          ),
         ],
       ),
     );
