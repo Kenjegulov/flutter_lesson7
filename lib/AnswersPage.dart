@@ -15,7 +15,7 @@ class AnswersPage extends StatelessWidget {
         title: const Center(
           child: Text(
             "Your answers",
-            style: TextStyle(color: Color(0xffC72127), fontSize: 40),
+            style: TextStyle(color: Color(0xffC72127), fontSize: 25),
           ),
         ),
       ),
@@ -24,24 +24,25 @@ class AnswersPage extends StatelessWidget {
         children: [
           for (int i = 0; i < list.length; i++)
             if (list[i] == UseAnsAndAnswer().getAnswer(i))
-              Text(
-                "${i + 1}) ${UseAnsAndAnswer().getQuestion(i)}",
-                style: const TextStyle(
-                  color: Colors.green,
-                  fontSize: 48,
+              Container(
+                width: double.infinity,
+                height: 35,
+                color: Colors.green,
+                child: Text(
+                  "${i + 1}) ${UseAnsAndAnswer().getQuestion(i)}",
+                  style: const TextStyle(fontSize: 28),
                 ),
               )
             else
-              Text(
-                "${i + 1}) ${UseAnsAndAnswer().getQuestion(i)}",
-                style: const TextStyle(
-                  color: Colors.red,
-                  fontSize: 48,
+              Container(
+                width: double.infinity,
+                height: 35,
+                color: Colors.red,
+                child: Text(
+                  "${i + 1}) ${UseAnsAndAnswer().getQuestion(i)}",
+                  style: const TextStyle(fontSize: 28),
                 ),
               ),
-          const SizedBox(
-            height: 40,
-          ),
         ],
       ),
     );

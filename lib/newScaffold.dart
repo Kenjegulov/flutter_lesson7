@@ -87,7 +87,7 @@ class _NewBodyState extends State<NewBody> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15)),
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 25)),
               onPressed: () {
                 // Навигация кийинки бетке
                 Navigator.push(
@@ -96,7 +96,9 @@ class _NewBodyState extends State<NewBody> {
                         // Экинчи баракты чакыруу
                         builder: (context) => AnswersPage(list: yourAnswers)));
               },
-              child: const Text("finish"),
+              child: const Text(
+                "finish",
+              ),
             ),
         ],
       ),

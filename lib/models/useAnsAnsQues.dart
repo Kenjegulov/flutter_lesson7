@@ -10,9 +10,6 @@ class UseAnsAndAnswer {
     AnswerAndQuestion(
         question: "Кыргызстан туштук батышынан Озбекстан менен кездешетпи?",
         answer: true),
-    AnswerAndQuestion(question: "Кыргызстанда 7", answer: true),
-    AnswerAndQuestion(question: "область барбы?", answer: true),
-    AnswerAndQuestion(question: "Кыргызстанда", answer: true),
   ];
   int next(int index) {
     // i++;
