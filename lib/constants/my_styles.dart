@@ -8,7 +8,7 @@ class MyTextStyles {
       fontWeight: FontWeight.w500);
 
   static const appTextStyle =
-      TextStyle(color: MyColors.whiteColor, fontSize: 32);
+      TextStyle(color: MyColors.yellowColor, fontSize: 32);
 
   static const trueTextStyle =
       TextStyle(color: MyColors.whiteColor, fontSize: 32);

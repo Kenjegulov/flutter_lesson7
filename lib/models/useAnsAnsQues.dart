@@ -1,15 +1,41 @@
 import 'ansAndQues.dart';
 
-// int i = 0;
-
 class UseAnsAndAnswer {
   List<AnswerAndQuestion> list = [
-    AnswerAndQuestion(question: "Кыргызстанда 7 область барбы?", answer: true),
     AnswerAndQuestion(
-        question: "Талас Кыргызстандын борборубу?", answer: false),
-    AnswerAndQuestion(
-        question: "Кыргызстан туштук батышынан Озбекстан менен кездешетпи?",
+        question:
+            'Flutter менен мобилдик тиркемелерди иштеп чыгуу үчүн DART тили колдонулат...',
         answer: true),
+    AnswerAndQuestion(
+        question: 'Флаттерди эч бир ОС колдобойт?...', answer: false),
+    AnswerAndQuestion(
+        question:
+            'Flutter менен колдонмолорду иштеп чыгуу үчүн IDE колдонуш керекби?...',
+        answer: true),
+    AnswerAndQuestion(
+        question: 'Флуттерде эч кандай виджеттер колдонулабайт...',
+        answer: false),
+    AnswerAndQuestion(
+        question: 'DART программалоо тили дүйнөдө жалгыз программалоо тили...',
+        answer: false),
+    AnswerAndQuestion(
+        question: 'void эч нерсе кайтарбаган фунция...', answer: true),
+    AnswerAndQuestion(
+        question: 'String жалаң гана сан алуучу класс...', answer: false),
+    AnswerAndQuestion(
+        question: 'Navigator бир беттен экинчи бетко өтүүчү класс...',
+        answer: true),
+    AnswerAndQuestion(
+        question: 'Flutter вепсайттарды жасоочу платформа...', answer: false),
+    AnswerAndQuestion(
+        question: 'AssetImage Сүрөт коюууда колдонулат...', answer: true),
+    AnswerAndQuestion(
+        question: 'SDK инструменттердин топтому...', answer: true),
+    AnswerAndQuestion(
+        question: '"debugShowCheckedModeBanner: true," демобаннерди өчүрөт...',
+        answer: false),
+    AnswerAndQuestion(
+        question: 'Баскыч кылуу үчүн Button колдонобуз...', answer: true),
   ];
   int next(int index) {
     // i++;

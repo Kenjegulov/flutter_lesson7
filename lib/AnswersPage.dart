@@ -19,31 +19,44 @@ class AnswersPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          for (int i = 0; i < list.length; i++)
-            if (list[i] == UseAnsAndAnswer().getAnswer(i))
-              Container(
-                width: double.infinity,
-                height: 35,
-                color: Colors.green,
-                child: Text(
-                  "${i + 1}) ${UseAnsAndAnswer().getQuestion(i)}",
-                  style: const TextStyle(fontSize: 28),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            for (int i = 0; i < list.length; i++)
+              if (list[i] == UseAnsAndAnswer().getAnswer(i))
+                Row(
+                  children: [
+                    Container(
+                      width: 500,
+                      height: 40,
+                      color: Colors.green,
+                      child: Text(
+                        "${i + 1}) ${UseAnsAndAnswer().getQuestion(i)}",
+                        style: const TextStyle(fontSize: 28),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                  ],
+                )
+              else
+                Row(
+                  children: [
+                    Container(
+                      width: 500,
+                      height: 40,
+                      color: Colors.red,
+                      child: Text(
+                        "${i + 1}) ${UseAnsAndAnswer().getQuestion(i)}",
+                        style: const TextStyle(fontSize: 28),
+                      ),
+                    ),
+                  ],
                 ),
-              )
-            else
-              Container(
-                width: double.infinity,
-                height: 35,
-                color: Colors.red,
-                child: Text(
-                  "${i + 1}) ${UseAnsAndAnswer().getQuestion(i)}",
-                  style: const TextStyle(fontSize: 28),
-                ),
-              ),
-        ],
+          ],
+        ),
       ),
     );
   }
